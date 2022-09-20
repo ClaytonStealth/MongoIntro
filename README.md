@@ -14,25 +14,19 @@ const eleven =	{
 
 - find author 
     db.posts.find({
-    author: {
-        $regex: /Thilanka/
-    }
+    author: {$regex: /Thilanka/}
 })
 
 - Greater than 5
 
 db.posts.find({
-    objectId: {
-        $gt: 5
-    }
+    objectId: {$gt: 5}
 })
 
 -Greater than april 1 2022
 
 db.posts.find({
-    createdAt: {
-        $gt: new Date("2022/04/01")
-    }
+    createdAt: {$gt: new Date("2022/04/01")}
 })
 
 part 2-------------------------
@@ -40,17 +34,13 @@ part 2-------------------------
 finding blogs where lastModified not existing
 
 db.posts.find({
-    lastModified: {
-        $exists: false
-    }
+    lastModified: {$exists: false}
 })
 
 createdAt type = date
 
 db.posts.find({
-    createdAt: {
-        $type: "date"
-    }
+    createdAt: {$type: "date"}
 })
 
 combined two queries not exists and type date
