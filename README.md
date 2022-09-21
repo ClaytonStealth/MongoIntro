@@ -81,7 +81,8 @@ db.posts.updateMany({
     createdAt: {$gt: new Date("May 2022")},
     {$addToSet: {categories: "lorem"},
         $set:{lastModified: new Date()}  
-}})
+    }
+})
 
 finding voluptas $in categories array and $pulling it and updating lastModified time
 
