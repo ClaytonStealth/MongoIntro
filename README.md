@@ -61,3 +61,39 @@ Stretch blogs with qui in array
 db.posts.find({
     categories: {$in: ["qui"]}
 })
+
+
+part 3 ------------------------------------------
+
+finding if lastModified exists and adding it if it doesnt
+
+db.posts.updateMany({
+    lastModified: {
+        $exists: false
+    },{$set:{
+        lastModified: new Date()
+    }
+}})
+
+dates after may 2022, adding lorem to category array AND updating lastModified
+
+db.posts.updateMany({
+    createdAt: {$gt: new Date("May 2022")},
+    {$addToSet: {categories: "lorem"},
+        $set:{lastModified: new Date()}  
+}})
+
+finding voluptas $in categories array and $pulling it and updating lastModified time
+
+db.posts.updateMany({
+    categories: {$in: ["voluptas"]},
+        {$pull: {categories: "voluptas"},
+        $set: {lastModified: new Date()}
+       }
+    })
+
+    looking for corrupti in Categories array and then deleting the blog that contains corrupti
+
+    db.posts.deleteMany({
+    categories: {$in: ["corrupti"]},
+    })
